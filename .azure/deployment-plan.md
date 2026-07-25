@@ -1,6 +1,6 @@
 # Azure Deployment Plan
 
-> **Status:** Validated
+> **Status:** Deployed
 
 Generated: 2026-07-25
 
@@ -116,11 +116,11 @@ deployment token, and custom domains will not be changed.
 - [x] Install from the clean lockfile and run the production static build.
 - [x] Verify `out/index.html`, assets, metadata, and routing configuration.
 - [x] Run Azure readiness validation.
-- [ ] Commit the complete portable source.
-- [ ] Push to GitHub `mpaliath/thisismaks.com` on `main`.
-- [ ] Monitor the existing GitHub Actions workflow until the commit is deployed
+- [x] Commit the complete portable source.
+- [x] Push to GitHub `mpaliath/thisismaks.com` on `main`.
+- [x] Monitor the existing GitHub Actions workflow until the commit is deployed
       successfully to `https://ashy-mushroom-07c568f10.7.azurestaticapps.net`.
-- [ ] Verify the Azure URL serves the new site.
+- [x] Verify the Azure URL serves the new site.
 
 ### Explicitly out of scope
 
@@ -170,5 +170,10 @@ Validated by: azure-validate workflow
 
 ## 10. Current Phase
 
-Validation is complete. Next: commit and push `main`, monitor the existing
-GitHub Actions deployment, and verify the Azure endpoint.
+Deployment completed successfully through GitHub Actions run `30165124794`.
+The Azure endpoint returned HTTP 200 and the deployed homepage content and
+security headers were verified on 2026-07-25.
+
+Live RBAC verification: not applicable. This deployment reuses the existing
+Static Web Apps GitHub integration and has no managed identity or data-plane
+role requirements.
