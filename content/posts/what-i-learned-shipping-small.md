@@ -2,7 +2,7 @@
 title: "What I learned shipping small"
 date: "2026-06-29"
 excerpt: "Why the shortest path from an idea to the world is often the one that teaches you the most."
-tag: "Practice"
+tag: "intro"
 readTime: "7 min read"
 ---
 

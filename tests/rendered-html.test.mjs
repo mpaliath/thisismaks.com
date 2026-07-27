@@ -4,13 +4,14 @@ import test from "node:test";
 
 const outputRoot = new URL("../out/", import.meta.url);
 
-test("exports the journal homepage as standalone HTML", async () => {
+test("exports the introduction homepage as standalone HTML", async () => {
   const html = await readFile(new URL("index.html", outputRoot), "utf8");
 
   assert.match(html, /<title>Maks — Notes on design and technology<\/title>/i);
-  assert.match(html, /Notes on design, technology/);
-  assert.match(html, /Building a calmer internet/);
-  assert.match(html, /Hello, I’m Maks/);
+  assert.match(html, /An open reading circle/);
+  assert.match(html, /A field guide to creative momentum/);
+  assert.match(html, /Reveal more/);
+  assert.match(html, /Progress stays in this browser/);
   assert.doesNotMatch(html, /vinext|wrangler|codex-preview|chatgpt-auth/i);
 });
 

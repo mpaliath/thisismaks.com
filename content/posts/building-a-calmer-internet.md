@@ -2,7 +2,7 @@
 title: "Building a calmer internet"
 date: "2026-07-18"
 excerpt: "A few notes on making digital spaces that leave room for attention, curiosity, and a little more humanity."
-tag: "Design"
+tag: "intro"
 readTime: "5 min read"
 ---
 

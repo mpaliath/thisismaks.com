@@ -2,7 +2,7 @@
 title: "A field guide to creative momentum"
 date: "2026-06-08"
 excerpt: "Small rituals, useful constraints, and other ways to keep moving when the blank page feels especially blank."
-tag: "Notes"
+tag: "intro"
 readTime: "4 min read"
 ---
 
