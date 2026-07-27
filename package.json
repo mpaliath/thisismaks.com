@@ -10,14 +10,19 @@
     "build": "next build",
     "build:azure": "./scripts/build-static.sh",
     "start": "npx serve out",
+    "new:note": "node scripts/new-note.mjs",
+    "deploy:notes": "node scripts/deploy-notes.mjs",
     "deploy:azure": "./scripts/deploy-azure.sh",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint ."
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.1",

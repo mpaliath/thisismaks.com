@@ -1,34 +1,12 @@
-const posts = [
-  {
-    number: "01",
-    date: "July 18, 2026",
-    readTime: "5 min read",
-    title: "Building a calmer internet",
-    excerpt:
-      "A few notes on making digital spaces that leave room for attention, curiosity, and a little more humanity.",
-    tag: "Design",
-  },
-  {
-    number: "02",
-    date: "June 29, 2026",
-    readTime: "7 min read",
-    title: "What I learned shipping small",
-    excerpt:
-      "Why the shortest path from an idea to the world is often the one that teaches you the most.",
-    tag: "Practice",
-  },
-  {
-    number: "03",
-    date: "June 8, 2026",
-    readTime: "4 min read",
-    title: "A field guide to creative momentum",
-    excerpt:
-      "Small rituals, useful constraints, and other ways to keep moving when the blank page feels especially blank.",
-    tag: "Notes",
-  },
-];
+import Link from "next/link";
+import { formatPostDate, getAllPosts } from "@/lib/posts";
 
 export default function Home() {
+  const posts = getAllPosts();
+  const currentYear = posts[0]
+    ? new Date(posts[0].date).getUTCFullYear()
+    : new Date().getUTCFullYear();
+
   return (
     <main>
       <header className="site-header">
@@ -53,26 +31,22 @@ export default function Home() {
       <section className="journal" id="journal" aria-labelledby="journal-title">
         <div className="section-heading">
           <h2 id="journal-title">Latest notes</h2>
-          <span>Vol. 01 — 2026</span>
+          <span>Vol. 01 — {currentYear}</span>
         </div>
 
         <div className="post-list">
-          {posts.map((post) => (
-            <article
-              className="post"
-              id={`note-${post.number}`}
-              key={post.number}
-            >
+          {posts.map((post, index) => (
+            <article className="post" key={post.slug}>
               <div className="post-number" aria-hidden="true">
-                {post.number}
+                {String(index + 1).padStart(2, "0")}
               </div>
               <div className="post-body">
                 <div className="post-meta">
-                  <span>{post.date}</span>
+                  <time dateTime={post.date}>{formatPostDate(post.date)}</time>
                   <span>{post.readTime}</span>
                 </div>
                 <h3>
-                  <a href={`#note-${post.number}`}>{post.title}</a>
+                  <Link href={`/journal/${post.slug}/`}>{post.title}</Link>
                 </h3>
                 <p>{post.excerpt}</p>
               </div>

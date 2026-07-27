@@ -14,6 +14,25 @@ test("exports the journal homepage as standalone HTML", async () => {
   assert.doesNotMatch(html, /vinext|wrangler|codex-preview|chatgpt-auth/i);
 });
 
+test("generates one static article page for every Markdown post", async () => {
+  const expectedPosts = [
+    "building-a-calmer-internet",
+    "what-i-learned-shipping-small",
+    "a-field-guide-to-creative-momentum",
+  ];
+
+  for (const slug of expectedPosts) {
+    const html = await readFile(
+      new URL(`journal/${slug}/index.html`, outputRoot),
+      "utf8",
+    );
+
+    assert.match(html, /All notes/);
+    assert.match(html, /Back to the journal/);
+    assert.doesNotMatch(html, /^---$/m);
+  }
+});
+
 test("includes Azure configuration and social assets", async () => {
   const config = JSON.parse(
     await readFile(new URL("staticwebapp.config.json", outputRoot), "utf8"),

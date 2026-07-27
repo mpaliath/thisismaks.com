@@ -18,6 +18,70 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Adding a journal post
+
+The easiest option is the interactive helper:
+
+```bash
+npm run new:note
+```
+
+It asks for the title, excerpt, and tag; derives a URL-safe slug; and defaults
+the date to today. New notes start with `draft: true`, so they will not appear
+on the site until that line is removed.
+
+You can also create a file manually:
+
+Create one Markdown file in `content/posts/`. The filename becomes the URL
+slug, so `a-new-note.md` is published at `/journal/a-new-note/`.
+
+Start the file with:
+
+```markdown
+---
+title: "A new note"
+date: "2026-07-26"
+excerpt: "A short description shown on the homepage and in link previews."
+tag: "Notes"
+readTime: "4 min read"
+---
+
+Write the post in Markdown here.
+```
+
+`title`, `date`, `excerpt`, and `tag` are required. `readTime` is optional; if
+omitted, it is estimated from the post length. Add `draft: true` to keep a file
+out of the build.
+
+At build time, every published Markdown file is converted to its own static
+page and automatically added to the homepage in reverse chronological order.
+No application code needs to change.
+
+### Publishing note-only changes
+
+After writing one or more notes, run:
+
+```bash
+npm run deploy:notes
+```
+
+This guarded workflow:
+
+1. Requires `main` to match `origin/main`.
+2. Refuses to proceed if any code, configuration, deletion, or non-Markdown
+   change is present.
+3. Runs the full static build and test suite.
+4. Shows which notes will publish and asks for confirmation.
+5. Commits and pushes the note changes to `main`.
+6. Waits for the Azure GitHub Actions deployment to finish.
+
+Changed drafts may be included in the commit but are excluded from the site.
+If every changed note is a draft, the command exits successfully without
+committing, pushing, or triggering an Azure deployment.
+
+Use the normal code-development workflow for functionality changes or note
+deletions.
+
 ## Static production build
 
 ```bash
