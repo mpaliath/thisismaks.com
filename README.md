@@ -6,17 +6,22 @@ Next.js website.
 
 ## Requirements
 
-- Node.js 20.9 or newer
-- npm
+- [mise](https://mise.jdx.dev/)
 
 ## Local development
 
 ```bash
+mise install
 npm ci
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+The repository's `mise.toml` pins Node.js (including its bundled npm), so mise
+selects the same toolchain locally and in GitHub Actions. If your shell does not
+already activate mise, prefix commands with `mise exec --`, for example
+`mise exec -- npm run dev`.
 
 ## Adding a journal post
 
