@@ -1,12 +1,10 @@
 ---
-title: "This is me"
+title: "A Brief Introduction to Me"
 date: "2026-07-30"
 excerpt: "A short exploration of self to answer the question - Who am I?"
 tag: "intro"
 order: 1
 ---
-
-# A Brief Introduction to Me
 
 If you had met me ten years ago, you would probably have guessed my life would revolve around software.
 
