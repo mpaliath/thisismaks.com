@@ -1,5 +1,5 @@
 ---
-title: "A Brief Introduction to Me"
+title: "A Brief Introduction"
 date: "2026-07-30"
 excerpt: "A short exploration of self to answer the question - Who am I?"
 tag: "intro"
