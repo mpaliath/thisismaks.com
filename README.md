@@ -31,9 +31,9 @@ The easiest option is the interactive helper:
 npm run new:note
 ```
 
-It asks for the title, excerpt, and tag; derives a URL-safe slug; and defaults
-the date to today. New notes start with `draft: true`, so they will not appear
-on the site until that line is removed.
+It asks for the title, excerpt, tag, and optional sequence order; derives a
+URL-safe slug; and defaults the date to today. New notes start with
+`draft: true`, so they will not appear on the site until that line is removed.
 
 You can also create a file manually:
 
@@ -49,18 +49,22 @@ date: "2026-07-26"
 excerpt: "A short description shown on the homepage and in link previews."
 tag: "Notes"
 readTime: "4 min read"
+order: 1
 ---
 
 Write the post in Markdown here.
 ```
 
 `title`, `date`, `excerpt`, and `tag` are required. `readTime` is optional; if
-omitted, it is estimated from the post length. Add `draft: true` to keep a file
-out of the build.
+omitted, it is estimated from the post length. `order` is an optional positive
+integer that controls a note's position in an introduction sequence. Add
+`draft: true` to keep a file out of the build.
 
 At build time, every published Markdown file is converted to its own static
-page and automatically added to the homepage in reverse chronological order.
-No application code needs to change.
+page. Introduction notes with `order` values appear in ascending order; notes
+without an order fall back to chronological order after explicitly ordered
+notes. To rearrange the sequence, edit the `order` values—no application code
+needs to change.
 
 ### Publishing note-only changes
 

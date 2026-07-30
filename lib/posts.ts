@@ -13,6 +13,7 @@ type PostFrontmatter = {
   tag: string;
   readTime?: string;
   draft?: boolean;
+  order?: number;
 };
 
 export type PostSummary = PostFrontmatter & {
@@ -38,6 +39,17 @@ function assertFrontmatter(
 
   if (Number.isNaN(Date.parse(data.date as string))) {
     throw new Error(`Post "${filename}" has an invalid "date" value.`);
+  }
+
+  if (
+    data.order !== undefined &&
+    (typeof data.order !== "number" ||
+      !Number.isInteger(data.order) ||
+      data.order < 1)
+  ) {
+    throw new Error(
+      `Post "${filename}" has an invalid "order" value; expected a positive integer.`,
+    );
   }
 }
 

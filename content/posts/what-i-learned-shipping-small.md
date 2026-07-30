@@ -4,6 +4,7 @@ date: "2026-06-29"
 excerpt: "Why the shortest path from an idea to the world is often the one that teaches you the most."
 tag: "intro"
 readTime: "7 min read"
+order: 3
 ---
 
 Small projects create a useful kind of honesty. There is less room to hide the

@@ -4,6 +4,7 @@ date: "2026-06-08"
 excerpt: "Small rituals, useful constraints, and other ways to keep moving when the blank page feels especially blank."
 tag: "intro"
 readTime: "4 min read"
+order: 2
 ---
 
 Momentum rarely arrives as a dramatic burst of inspiration. More often, it

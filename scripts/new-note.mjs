@@ -65,6 +65,16 @@ try {
   const tagInput = (await prompt.question("Tag [Notes]: ")).trim();
   const tag = tagInput || "Notes";
 
+  const orderInput = (
+    await prompt.question("Sequence order (optional): ")
+  ).trim();
+  if (
+    orderInput &&
+    (!Number.isInteger(Number(orderInput)) || Number(orderInput) < 1)
+  ) {
+    throw new Error("Sequence order must be a positive integer.");
+  }
+
   const dateInput = (await prompt.question(`Date [${today}]: `)).trim();
   const date = dateInput || today;
   if (Number.isNaN(Date.parse(date))) {
@@ -83,7 +93,7 @@ title: ${quoteYaml(title)}
 date: ${quoteYaml(date)}
 excerpt: ${quoteYaml(excerpt)}
 tag: ${quoteYaml(tag)}
-draft: true
+${orderInput ? `order: ${orderInput}\n` : ""}draft: true
 ---
 
 Write your note here.

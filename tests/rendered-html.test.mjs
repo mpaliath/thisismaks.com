@@ -9,9 +9,13 @@ test("exports the introduction homepage as standalone HTML", async () => {
 
   assert.match(html, /<title>Maks — Notes on design and technology<\/title>/i);
   assert.match(html, /An open reading circle/);
-  assert.match(html, /A field guide to creative momentum/);
+  assert.match(html, /This is me/);
   assert.match(html, /Reveal more/);
   assert.match(html, /Progress stays in this browser/);
+  assert.ok(
+    html.indexOf("This is me") <
+      html.indexOf("A field guide to creative momentum"),
+  );
   assert.doesNotMatch(html, /vinext|wrangler|codex-preview|chatgpt-auth/i);
 });
 
@@ -20,6 +24,7 @@ test("generates one static article page for every Markdown post", async () => {
     "building-a-calmer-internet",
     "what-i-learned-shipping-small",
     "a-field-guide-to-creative-momentum",
+    "this-is-me",
   ];
 
   for (const slug of expectedPosts) {

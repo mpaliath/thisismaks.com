@@ -3,7 +3,7 @@ title: "This is me"
 date: "2026-07-30"
 excerpt: "A short exploration of self to answer the question - Who am I?"
 tag: "intro"
-draft: true
+order: 1
 ---
 
 # A Brief Introduction to Me

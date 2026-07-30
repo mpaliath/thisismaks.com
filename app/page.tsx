@@ -5,8 +5,18 @@ export default async function Home() {
   const introSummaries = getAllPosts()
     .filter((post) => post.tag.toLowerCase() === "intro")
     .sort(
-      (first, second) =>
-        new Date(first.date).getTime() - new Date(second.date).getTime(),
+      (first, second) => {
+        if (first.order !== undefined || second.order !== undefined) {
+          return (
+            (first.order ?? Number.MAX_SAFE_INTEGER) -
+            (second.order ?? Number.MAX_SAFE_INTEGER)
+          );
+        }
+
+        return (
+          new Date(first.date).getTime() - new Date(second.date).getTime()
+        );
+      },
     );
   const introPosts = (
     await Promise.all(
@@ -14,7 +24,7 @@ export default async function Home() {
     )
   ).filter((post) => post !== null);
   const sequenceId = introPosts
-    .map((post) => `${post.slug}@${post.date}`)
+    .map((post) => `${post.slug}@${post.date}#${post.order ?? "unordered"}`)
     .join("|");
 
   return (
